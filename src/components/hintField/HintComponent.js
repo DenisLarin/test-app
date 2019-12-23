@@ -12,6 +12,7 @@ const HintComponent = (props) => {
             <li>{item}</li>
         </CSSTransition>
     });
+
     return (
         <TransitionGroup className={css.hints}>
             {hints}
@@ -21,6 +22,6 @@ const HintComponent = (props) => {
 };
 HintComponent.propTypes = {
     hints: PropTypes.array
-}
+};
 
 export default HintComponent;
