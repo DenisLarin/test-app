@@ -1,0 +1,9 @@
+.input{
+    width: 150px;
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 15px;
+}
+.input:focus{
+    border-color: #ffa069;
+}

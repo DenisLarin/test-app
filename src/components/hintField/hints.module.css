@@ -1,0 +1,9 @@
+.hints{
+    display: block;
+    width: max-content;
+    margin-top: 10px;
+}
+.hints li{
+    border-bottom: 1px dashed #848282;
+    cursor: pointer;
+}

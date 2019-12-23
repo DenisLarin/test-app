@@ -1,0 +1,8 @@
+.control{
+    display: flex;
+    align-items: center;
+}
+.control__withHint{
+    display: flex;
+    flex-direction: column;
+}

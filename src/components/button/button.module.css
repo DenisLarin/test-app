@@ -1,0 +1,17 @@
+.button{
+    padding: 3px;
+    border: 1px solid #848282;
+    border-radius: 5px;
+    box-shadow: 2px 2px 3px #848282;
+    cursor: pointer;
+    margin-right: 10px;
+    margin-left: 10px;
+    transition: 0.3s;
+}
+.button:first-child{
+    margin-left: 0;
+}
+.button:hover{
+    box-shadow: none;
+    border-color: #ffa069;
+}

@@ -1,0 +1,9 @@
+.section-controls {
+  min-height: 200px;
+  display: flex;
+  flex-direction: column;
+}
+
+.section-controls > * {
+  margin: 20px;
+}
