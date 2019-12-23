@@ -68,11 +68,12 @@ const Control = (props) => {
 
                 setHint(total);
             }).catch(error => {
-                console.log(error);
+                setError(error);
             })
         }
     };
 
+    //формирование компонента для отображения
     let renderItem = null;
     if (props.numberButtons) {
         if (props.isTwoSideBtn && props.numberButtons === 2) {
@@ -80,7 +81,6 @@ const Control = (props) => {
                 <Button name="alert" callback={alertButtonHandler}/>
                 <Input onChange={onTextChangeHandler} placeholder={props.inputPlaceHolder} refLink={inputRef}/>
                 <Button name="alert if number" callback={alertIfNumberButtonHandler}/>
-                <Error error={error}/>
             </>;
         } else if (props.numberButtons === 2) {
             renderItem = <>
@@ -104,6 +104,7 @@ const Control = (props) => {
     return (
         <div className={css.control}>
             {renderItem}
+            {error ? <Error error={error}/> : null}
         </div>
     );
 };
