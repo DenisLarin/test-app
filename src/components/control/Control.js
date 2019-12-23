@@ -6,20 +6,24 @@ import HintComponent from "../hintField/HintComponent";
 import css from './control.module.css'
 import Input from "../input/Input";
 import Error from "../error/Error";
+import CleanButton from "../button/cleanButton/CleanButton";
 
 const Control = (props) => {
+    //использую, для того чтобы не перерендеривать компоненты (при дейсвиях с кнопками)
     const inputRef = React.createRef();
 
+    //state
     const [hint, setHint] = useState([]);
+    //для отслеживания нажатия на кнопку использую состояние текста (вызывается перерендр тестового поля)
     const [textValue, setTextValue] = useState("");
+    // информация об ошибке
     const [error, setError] = useState("");
 
-    const cleanButtonHandler = () => {
-        inputRef.current.value = "";
-    };
+    //изменение текста на hello world
     const changeTextButtonHandler = () => {
         inputRef.current.value = "Hello world!"
     };
+    //вызов alert
     const alertButtonHandler = (text = "") => {
         if (!inputRef.current.value) {
             setError("введите значение в строку");
@@ -30,13 +34,11 @@ const Control = (props) => {
         }
         alert(inputRef.current.value);
     };
+    //вызов alert если число
     const alertIfNumberButtonHandler = () => {
         if (!inputRef.current.value || inputRef.current.value.indexOf(" ") !== -1) {
             setError("введите значение или удалите из строки пробелы");
             return;
-        }
-        if (error) {
-            setError("");
         }
         if (!Number.isNaN(Number(inputRef.current.value))) {
             alertButtonHandler(inputRef.current.value);
@@ -45,6 +47,7 @@ const Control = (props) => {
         }
     };
 
+    //изменение текста в inputField
     const onTextChangeHandler = (event, isSearch = false) => {
         if (!isSearch) {
             if (error) {
@@ -82,20 +85,21 @@ const Control = (props) => {
         } else if (props.numberButtons === 2) {
             renderItem = <>
                 <Input placeholder={props.inputPlaceHolder} refLink={inputRef}/>
-                <Button name="clean" callback={cleanButtonHandler}/>
+                <CleanButton inputRef={inputRef}/>
                 <Button name="change text to 'hello world'" callback={changeTextButtonHandler}/>
             </>;
         } else {
             renderItem = <>
                 <Input placeholder={props.inputPlaceHolder} refLink={inputRef}/>
-                <Button name="clean" callback={cleanButtonHandler}/>
+                <CleanButton inputRef={inputRef}/>
             </>;
         }
     } else {
         renderItem = <div className={css.control__withHint}><Input value={textValue}
                                                                    onChange={(event => onTextChangeHandler(event,true))}
                                                                    placeholder={props.inputPlaceHolder}/>
-            <HintComponent hints={hint}/></div>
+            {textValue ? <HintComponent hints={hint}/> : null}
+        </div>
     }
     return (
         <div className={css.control}>
