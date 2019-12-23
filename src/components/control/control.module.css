@@ -1,6 +1,7 @@
 .control{
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
 }
 .control__withHint{
     display: flex;

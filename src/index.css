@@ -21,22 +21,3 @@ ul,li{
   list-style: none;
   text-decoration: none;
 }
-
-
-.item-enter {
-  opacity: 0;
-  transform: translateY(-100%);
-}
-.item-enter-active {
-  opacity: 1;
-  transform: translateY(0);
-  transition: transform 250ms ease-in-out, opacity 300ms;
-}
-.item-exit {
-  transform: translateY(0);
-}
-.item-exit-active {
-  opacity: 0;
-  transform: translateY(-100%);
-  transition: transform 250ms ease-in-out, opacity 300ms;
-}

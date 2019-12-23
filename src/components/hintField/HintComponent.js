@@ -8,7 +8,7 @@ import {
 
 const HintComponent = (props) => {
     const hints = props.hints.map(item => {
-        return <CSSTransition timeout={300} classNames="item" key={item}>
+        return <CSSTransition timeout={300} classNames={{enter: css.itemEnter, enterActive: css.itemEnterActive, exit: css.itemExit, exitActive: css.itemExitActive}} key={item}>
             <li>{item}</li>
         </CSSTransition>
     });

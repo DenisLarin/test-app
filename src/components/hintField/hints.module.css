@@ -7,3 +7,21 @@
     border-bottom: 1px dashed #848282;
     cursor: pointer;
 }
+
+.itemEnter {
+    opacity: 0;
+    transform: translateY(-100%);
+}
+.itemEnterActive {
+    opacity: 1;
+    transform: translateY(0);
+    transition: transform 250ms ease-in-out, opacity 300ms;
+}
+.itemExit {
+    transform: translateY(0);
+}
+.itemExitActive {
+    opacity: 0;
+    transform: translateY(-100%);
+    transition: transform 250ms ease-in-out, opacity 300ms;
+}
